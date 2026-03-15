@@ -7,9 +7,7 @@ import matplotlib.pyplot as plt
 st.title("YouTube Content Monetization Modeler")
 st.write("Predict YouTube ad revenue and explore content performance insights")
 
-# -----------------------------
-# Load Model + Scaler
-# -----------------------------
+
 @st.cache_resource
 def load_model():
     model = joblib.load("C:\\Users\\Bhairavi\\OneDrive\\DataScience\\Youtube Content Monetization\\linear_regression_model.pkl")
@@ -18,22 +16,16 @@ def load_model():
 
 model, scaler = load_model()
 
-# -----------------------------
-# Load Dataset (for analytics)
-# -----------------------------
+
 df = pd.read_csv("C:\\Users\\Bhairavi\\OneDrive\\GUVI- DSA\\Projects\\Project 3 - Youtube monetization\\youtube_ad_revenue_dataset.csv")
 
-# -----------------------------
-# Sidebar Navigation
-# -----------------------------
+
 menu = st.sidebar.selectbox(
     "Navigation",
     ["Revenue Prediction", "Visual Analytics", "Model Insights"]
 )
 
-# =====================================================
-# 1️⃣ REVENUE PREDICTION
-# =====================================================
+
 if menu == "Revenue Prediction":
 
     st.header("Predict Ad Revenue")
@@ -117,9 +109,7 @@ if menu == "Revenue Prediction":
 
         st.success(f"Estimated Ad Revenue: ${prediction[0]:.2f}")
 
-# =====================================================
-# 2️⃣ VISUAL ANALYTICS
-# =====================================================
+
 elif menu == "Visual Analytics":
 
     st.header("YouTube Performance Analytics")
@@ -140,9 +130,7 @@ elif menu == "Visual Analytics":
     st.subheader("Device Usage")
     st.bar_chart(df["device"].value_counts())
 
-# =====================================================
-# 3️⃣ MODEL INSIGHTS
-# =====================================================
+
 elif menu == "Model Insights":
 
     st.header("Model Performance Insights")
